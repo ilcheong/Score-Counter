@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="new.css">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+    <div class = "container">
+        <h1>스코어보드</h1>
+        <div class ="Team1">
+            <button class = "In1">score-T1</button>
+            <h1>T1</h1>
+        </div>
+        <div class="scoreboard">
+            <span id="score1">0</span>
+            <span id="ssd">:</span>
+            <span id="score2">0</span>
+        </div>
+        <div class = "Team2">
+            <h1>T2</h1>
+            <button class = "In2">score-T2</button>
+        </div>
+        <button class = "reset">reset</button>
+    </div>
+    <script>
+        const In1 = document.querySelector(".In1");
+        const In2 = document.querySelector(".In2");
+        const reset = document.querySelector(".reset");
+
+        const score1 = document.querySelector("#score1");
+        const score2 = document.querySelector("#score2");
+        const ssd = document.querySelector("#ssd");
+        let score1p = 0;
+        let score2p = 0;
+
+        function update() {
+            score1.textContent = score1p;
+            score2.textContent = score2p;
+
+            if(score1p > score2p)
+        {
+            score1.style.color = "blue";
+            score2.style.color = "red";
+        }
+        else if(score1p<score2p)
+        {
+            score1.style.color="red";
+            score2.style.color="blue";
+        }
+        else if(score1p == 0 && score2p == 0)
+        {
+            score1.style.color="black";
+            score2.style.color="black";
+        }
+        else{
+            score1.style.color="green";
+            score2.style.color="green";
+        }
+        }
+
+        In1.addEventListener("click", function() {
+            score1p++;
+            update();
+        })
+
+        In2.addEventListener("click", function() {
+            score2p++;
+            update();
+        })
+
+        reset.addEventListener("click", function() {
+            score1p=0;
+            score2p=0;
+            update();
+        })
+
+        
+    </script>
+    </main>
+</body>
+</html>
